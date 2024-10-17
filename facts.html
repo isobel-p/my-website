@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Isobel P | Facts</title>
+  </head>
+  <body>
+    <h1>Isobel Pang</h1>
+    <h2>Facts</h2>
+    <i><p>The figure brings out a deck of cards and invites you to take one.</p></i>
+    <button onclick="showRandomFact()">Take one!</button>
+    <div><p id="fact"></p></div>
+    <button onclick="document.location='index.html'">"Bored now..."</button>
+    <script>
+        const facts = [
+            "Stay positive, work hard, make it happen.",
+            "Believe you can and you're halfway there.",
+            "Do one thing every day that scares you.",
+            "Success is not the key to happiness. Happiness is the key to success.",
+            "Turn your wounds into wisdom."
+        ];
+
+        function showRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById("fact").textContent = facts[randomIndex];
+        }
+    </script>
+  </body>
+</html>
