@@ -1,0 +1,27 @@
+body {
+    font-family:"Old Standard TT", 'Times New Roman', Times, serif;
+}
+
+button{
+    cursor:help;
+    background-color:white;
+    border-width:2px; 
+    border-style:solid;
+    border-color:#8FC0A9;
+    border-radius:3px;
+    padding:3px;
+    margin:2px;
+    font-family:"DM Sans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+} 
+
+abbr {
+    cursor: grabbing;
+}
+
+div {
+    width:400px;
+    margin:auto;
+    padding:10px;
+    border-style:solid;
+    border-radius:5px;
+  }
