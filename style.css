@@ -1,5 +1,16 @@
 body {
     font-family:"Old Standard TT", 'Times New Roman', Times, serif;
+    color: black;
+}
+
+#narration {
+    font-style:italic;
+    font-weight:1000;
+    color:black;
+    background-color:rgba(255, 255, 255, 0.5);
+    padding:10px;
+    border-left-style:solid;
+    border-left-width:5px;
 }
 
 button{
@@ -22,6 +33,9 @@ div {
     width:400px;
     margin:auto;
     padding:10px;
+    color: black;
+    background-color:rgba(255, 255, 255, 0.5);
+    border-color:black;
     border-style:solid;
     border-radius:5px;
   }
