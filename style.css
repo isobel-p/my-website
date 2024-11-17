@@ -1,9 +1,11 @@
 body {
     font-family:"Old Standard TT", 'Times New Roman', Times, serif;
     color: black;
+    cursor:vertical-text;
 }
 
 #narration {
+    cursor:pointer;
     font-style:italic;
     font-weight:1000;
     color:black;
@@ -26,7 +28,7 @@ button{
 } 
 
 abbr {
-    cursor: grabbing;
+    cursor:copy;
 }
 
 div {
