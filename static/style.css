@@ -1,3 +1,19 @@
+* {
+    box-sizing: border-box;
+    margin: 10;
+    padding: 10;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -5,26 +21,43 @@ body {
     font-family: "Space Mono", monospace;
     font-weight: 400;
     font-style: normal;
+    height: auto;
+    overflow-x: hidden;
+}
+
+#hero {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Behind content */
 }
 
 #content {
     position: relative;
-    z-index: 100;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 200vh;
+    margin-top: 100vh; /* Push below hero */
+    color: white;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
 }
-
-#content-text {
+#title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.7);
-    padding: 20px;
+    padding: 30px;
     border-radius: 20px;
+    width: 85%;
+    max-width: 600px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    z-index: 10;
 }
-
 #particles-js {
     position: absolute;
     width: 100%;
@@ -32,4 +65,8 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+html, body {
+    height: 100%;
 }
