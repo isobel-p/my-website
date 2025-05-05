@@ -1,34 +1,48 @@
-<!--https://coolors.co/d88c9a-f2d0a9-f1e3d3-99c1b9-8e7dbe-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Website</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <title>My Website</title>
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    <div class="page-wrapper">
-        <div id="hero">
-            <div id="title">
-                <h1 class="split">Isobel Pang</h1>
-                <p>Hi!</p>
-                <a href="#content">Start</a>
+    <nav>
+        <div class="base-navbar">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="static/test.jpg">
+                </div>
+                <div class="navigation">
+                    <div class="item">
+                        <div class="item-square">
+                            <a href="/tea">tea</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-square">
+                            <a href="/tea">tea</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-square">
+                            <a href="/tea">tea</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-square">
+                            <a href="/tea">tea</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="content">
-            <p>This is a test.</p><p>This is a test.</p><p>This is a test.</p><p>This is a test.</p><p>This is a test.</p><p>This is a test.</p><p>This is a test.</p><p>This is a test.</p><p>This is a test.</p><p>This is a test.</p><p>This is a test.</p>
-        </div>
-    </div>
-    <div id="particles-js"></div>
-    <script src="{{ url_for('static', filename='particles.min.js') }}"></script>
-    <script>
-      particlesJS.load('particles-js', "{{ url_for('static', filename='particles.json') }}");
-    </script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </nav>
+    <main>
+        <p>This is the main content of the page.</p>
+    </main>
+    <footer>
+        <p>This is the footer of the page.</p>
+    </footer>
 </body>
 </html>
