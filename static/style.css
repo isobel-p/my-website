@@ -1,15 +1,4 @@
-.logo {
-    width: 100%;
-}
-
-.logo img {
-    height: 40px;
-    position: relative;
-}
-
-.logo img:hover {
-    height: 50px;
-}
+/* Navbar */
 
 .base-navbar {
     height: 100px;
@@ -32,6 +21,19 @@
     justify-content: space-between;
     font-weight: 400;
     max-width: 2000px;
+}
+
+.logo {
+    width: 100%;
+}
+
+.logo img {
+    height: 40px;
+    position: relative;
+}
+
+.logo img:hover {
+    height: 50px;
 }
 
 .navigation {
@@ -61,6 +63,24 @@
     color: white;
 }
 
+/* Main content */
+
 main {
     margin-top: 150px;
+}
+
+.base-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.content {
+    height: 100%;
+    width: 90%;
+    max-width: 2000px;
+    overflow: hidden;
+    position: relative;
 }
