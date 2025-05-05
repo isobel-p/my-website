@@ -10,7 +10,7 @@ def home():
 def static_files(filename):
     return send_from_directory('static', filename)
 
-@app.route('/tea')
+@app.route('/418')
 def tea():
     abort(418)
 
