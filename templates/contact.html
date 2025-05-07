@@ -44,9 +44,18 @@
     <main>
         <div class="base-content">
             <div class="content">
-                <h2>Hi, I'm</h2>
-                <h1>Isobel Pang</h1>
-                <p>This is the main content of the page.</p>
+                <form method="POST" action="/contact">
+                    {{ form.hidden_tag()}}
+                    {{ form.name.label }} {{ form.name(size=20) }}
+                    <input type="submit" value="Go">
+                    {% if form.name.errors %}
+                        <ul class="errors">
+                            {% for error in form.name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </form>
             </div>
         </div>
     </main>

@@ -98,3 +98,10 @@ h1 {
     font-size: 100px;
     margin-top: 0px;
 }
+
+.centre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
