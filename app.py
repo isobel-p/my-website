@@ -12,13 +12,13 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "Hello123"
 
 class Contact(FlaskForm):
-    first = StringField('*First Name*', validators=[DataRequired()])
+    first = StringField('First Name', validators=[DataRequired()])
     last = StringField('Last Name')
     email = EmailField('Email')
     tel = TelField('Phone Number')
     social = StringField('Other - Platform: ')
     username = StringField('Other - Username/Tag/Alias: ')
-    message = StringField('*Message*', validators=[DataRequired()])
+    message = StringField('Message', validators=[DataRequired()])
     files = MultipleFileField('Attachments')
     news = BooleanField('I would like to receive newsletters and updates (if I ever send them)')
 
@@ -32,22 +32,22 @@ def contact():
     if form.validate_on_submit():
         msg = MIMEMultipart() 
         msg['From'] = "isobel-p@hackclub.app"
-        msg['To'] = "isobel-p@hackclub.app"
+        msg['To'] = "isobelpang@gmail.com"
         msg['Subject'] = f'{form.first.data} {form.last.data} - {datetime.datetime.now()}'
         body = f"""-----
-        NEW MESSAGE!
-        Sender: {form.first.data} {form.last.data}
-        {f'Email: {form.email.data}' if len(form.email.data) != 0 else ""}
-        {f'Tel: {form.tel.data}' if len(form.tel.data) != 0 else ""}
-        {f'Other: {form.username.data} at {form.social.data}' if len(form.social.data) != 0 else ""}
-        Wants to receive mail: {form.news.data}
-        -----
+NEW MESSAGE!
+Sender: {form.first.data} {form.last.data}
+{f'Email: {form.email.data}' if len(form.email.data) != 0 else "No email provided"}
+{f'Tel: {form.tel.data}' if len(form.tel.data) != 0 else "No telephone num provided"}
+{f'Other: {form.username.data} at {form.social.data}' if len(form.social.data) != 0 else "No other socials provided"}
+Wants to receive mail: {form.news.data}
+-----
 
-        {form.message.data}
-        """
+{form.message.data}
+"""
         msg.attach(MIMEText(body, 'plain')) 
         for file in form.files.data:
-            if file:
+            if file and not type(str):
                 file_content = file.read()
                 attachment = MIMEApplication(file_content)
                 attachment.add_header(

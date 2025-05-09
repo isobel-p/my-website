@@ -111,6 +111,13 @@ h1 {
 
 /* Contact form */
 
+#form {
+    border-width: 2px;
+    border-radius: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
 #snoopy {
     padding: 20px;
 }

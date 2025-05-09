@@ -45,34 +45,36 @@
         <div class="base-content">
             <div class="content">
                 <form method="POST" action="/contact">
-                    <h2>I use email</h2>
-                    <a href="mailto:isobel-p@hackclub.app">Contact me here!</a>
-                    
-                    <h2>I use other socials</h2>
-                    <p>Feel free to drop me a DM!</p>
-
-                    <h2>I use something else</h2>
-                    <p>Might be slightly harder for me to respond but use the universal contact form below!</p>
-                    {{ form.hidden_tag()}}
-                    {{ form.first.label }} {{ form.first(size=20) }}<br>
-                    {{ form.last.label }} {{ form.last(size=20) }}<br>
-                    {{ form.email.label }} {{ form.email(size=20) }}<br>
-                    {{ form.tel.label }} {{ form.tel(size=20) }}<br>
-                    {{ form.social.label }} {{ form.social(size=20) }}<br>
-                    {{ form.username.label }} {{ form.username(size=20) }}<br>
-                    {{ form.message.label }} {{ form.message(size=40) }}<br>
-                    {{ form.files.label }} {{ form.files() }}<br>
-                    {{ form.news.label }} {{ form.news() }}<br>
-                    <input type="submit" value="Go">
-                    {% for field in form %}
-                        {% if field.errors %}
-                            <ul class="errors"></ul>
-                                {% for error in field.errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    {% endfor %}
+                    <h2>Say hi!</h2>
+                    <p>I'm open to unsolicited testimonials, if you have a partnership request, <a href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons">party invitation</a>, or just want to say hi.</p>
+                    <p>Feel free to fill out the universal contact form below. I’ll write back ASAP; I check my messages every morning 8AM GMT. Your messages matter to me!</p>
+                    <div class="centre" id="form">
+                        <b><p>All bold sections are required!</p></b>
+                        {{ form.hidden_tag()}}
+                        <b>{{ form.first.label }}</b> <br> {{ form.first(size=20) }}<br>
+                        {{ form.last.label }} <br> {{ form.last(size=20) }}<br>
+                        {{ form.email.label }} <br> {{ form.email(size=20) }}<br>
+                        {{ form.tel.label }} <br> {{ form.tel(size=20) }}<br><br>
+                        {{ form.social.label }} <br> {{ form.social(size=20) }}<br>
+                        {{ form.username.label }} <br> {{ form.username(size=20) }}<br><br>
+                        <b>{{ form.message.label }}</b> <br> {{ form.message(size=70) }}<br><br>
+                        {{ form.files.label }} {{ form.files() }}<br><br>
+                        {{ form.news.label }} {{ form.news() }}<br>
+                        <input type="submit" value="Go">
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <ul class="errors"></ul>
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% endfor %}
+                        <br><br>
+                    </div>
+                    <hr>
+                    <h3>Not working?</h3>
+                    <p>I'm probably working to fix this right now, but in the meantime you can email me <a href="mailto:isobel-p@hackclub.app">here</a>.</p>
                 </form>
             </div>
         </div>
