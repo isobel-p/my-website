@@ -29,7 +29,7 @@
                     </div>
                     <div class="item">
                         <div class="item-square">
-                            <b><del><a href="/contact">contact</a></del></b>
+                            <b><a href="/contact">contact</a></b>
                         </div>
                     </div>
                     <div class="item">
@@ -45,16 +45,34 @@
         <div class="base-content">
             <div class="content">
                 <form method="POST" action="/contact">
+                    <h2>I use email</h2>
+                    <a href="mailto:isobel-p@hackclub.app">Contact me here!</a>
+                    
+                    <h2>I use other socials</h2>
+                    <p>Feel free to drop me a DM!</p>
+
+                    <h2>I use something else</h2>
+                    <p>Might be slightly harder for me to respond but use the universal contact form below!</p>
                     {{ form.hidden_tag()}}
-                    {{ form.name.label }} {{ form.name(size=20) }}
+                    {{ form.first.label }} {{ form.first(size=20) }}<br>
+                    {{ form.last.label }} {{ form.last(size=20) }}<br>
+                    {{ form.email.label }} {{ form.email(size=20) }}<br>
+                    {{ form.tel.label }} {{ form.tel(size=20) }}<br>
+                    {{ form.social.label }} {{ form.social(size=20) }}<br>
+                    {{ form.username.label }} {{ form.username(size=20) }}<br>
+                    {{ form.message.label }} {{ form.message(size=40) }}<br>
+                    {{ form.files.label }} {{ form.files() }}<br>
+                    {{ form.news.label }} {{ form.news() }}<br>
                     <input type="submit" value="Go">
-                    {% if form.name.errors %}
-                        <ul class="errors">
-                            {% for error in form.name.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
+                    {% for field in form %}
+                        {% if field.errors %}
+                            <ul class="errors"></ul>
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
                 </form>
             </div>
         </div>

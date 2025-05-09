@@ -1,16 +1,26 @@
 from flask import Flask, render_template, abort, send_from_directory, redirect
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, EmailField, TelField, MultipleFileField, BooleanField
 from wtforms.validators import DataRequired
-from dotenv import load_dotenv
-import os
-
-class Contact(FlaskForm):
-    name = StringField('name', validators=[DataRequired()])
+import smtplib 
+from email.mime.multipart import MIMEMultipart 
+from email.mime.text import MIMEText 
+from email.mime.application import MIMEApplication
+import datetime
 
 app = Flask(__name__)
-load_dotenv()
 app.config['SECRET_KEY'] = "Hello123"
+
+class Contact(FlaskForm):
+    first = StringField('*First Name*', validators=[DataRequired()])
+    last = StringField('Last Name')
+    email = EmailField('Email')
+    tel = TelField('Phone Number')
+    social = StringField('Other - Platform: ')
+    username = StringField('Other - Username/Tag/Alias: ')
+    message = StringField('*Message*', validators=[DataRequired()])
+    files = MultipleFileField('Attachments')
+    news = BooleanField('I would like to receive newsletters and updates (if I ever send them)')
 
 @app.route('/')
 def home():
@@ -20,9 +30,43 @@ def home():
 def contact():
     form = Contact()
     if form.validate_on_submit():
-        name = form.name.data
-        with open("test", "a") as file:
-            file.write(name + "\n")
+        msg = MIMEMultipart() 
+        msg['From'] = "isobel-p@hackclub.app"
+        msg['To'] = "isobel-p@hackclub.app"
+        msg['Subject'] = f'{form.first.data} {form.last.data} - {datetime.datetime.now()}'
+        body = f"""-----
+        NEW MESSAGE!
+        Sender: {form.first.data} {form.last.data}
+        {f'Email: {form.email.data}' if len(form.email.data) != 0 else ""}
+        {f'Tel: {form.tel.data}' if len(form.tel.data) != 0 else ""}
+        {f'Other: {form.username.data} at {form.social.data}' if len(form.social.data) != 0 else ""}
+        Wants to receive mail: {form.news.data}
+        -----
+
+        {form.message.data}
+        """
+        msg.attach(MIMEText(body, 'plain')) 
+        for file in form.files.data:
+            if file:
+                file_content = file.read()
+                attachment = MIMEApplication(file_content)
+                attachment.add_header(
+                    'Content-Disposition',
+                    f'attachment; filename="{file.filename}"'
+                )
+                msg.attach(attachment)
+        try: 
+            server = smtplib.SMTP("hackclub.app", 587) 
+            server.ehlo() 
+            server.starttls() 
+            server.ehlo()
+            server.login("isobel-p", ")WCAjW5W$rG7j6D-") 
+            server.sendmail(msg["From"], msg["To"], msg.as_string()) 
+            print("Email has been sent successfully!") 
+        except Exception as e: 
+            print(f"Failed to send email: {e}")
+        finally: 
+            server.quit() 
         return redirect('/success')
     return render_template("contact.html", form=form)
 
@@ -37,6 +81,10 @@ def about():
 @app.route('/static/<path:filename>')
 def static_files(filename):
     return send_from_directory('static', filename)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/418')
 def tea():
