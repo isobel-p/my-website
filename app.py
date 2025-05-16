@@ -62,11 +62,43 @@ Wants to receive mail: {form.news.data}
             server.ehlo()
             server.login("isobel-p", ")WCAjW5W$rG7j6D-") 
             server.sendmail(msg["From"], msg["To"], msg.as_string()) 
-            print("Email has been sent successfully!") 
+            print("Email has been sent successfully!")
         except Exception as e: 
             print(f"Failed to send email: {e}")
-        finally: 
-            server.quit() 
+        finally:
+            server.quit()
+        if len(form.email.data) > 0:
+            receipt = MIMEMultipart()
+            receipt['From'] = "isobel-p@hackclub.app"
+            receipt['To'] = form.email.data
+            receipt['Subject'] = f'Thanks for your message!'
+            body = f"""Hi {form.first.data}!
+
+Thanks for leaving a message! I'll write back ASAP.
+            
+Because you left your email in the contact form, you're receiving this email receipt.
+            
+This is an automated message from an unmonitored inbox - please don't reply to this email! I'll write to you soon.
+            
+Expect a reply in at most 1 business week. Or don't, that's up to you.
+            
+Kind regards,
+Isobel
+<3
+Sent at {datetime.datetime.now()} from sunny England"""
+            receipt.attach(MIMEText(body, "plain"))
+            try: 
+                server = smtplib.SMTP("hackclub.app", 587) 
+                server.ehlo() 
+                server.starttls() 
+                server.ehlo()
+                server.login("isobel-p", ")WCAjW5W$rG7j6D-") 
+                server.sendmail(receipt["From"], receipt["To"], receipt.as_string()) 
+                print("Email has been sent successfully!")
+            except Exception as e: 
+                print(f"Failed to send email: {e}")
+            finally:
+                server.quit()
         return redirect('/success')
     return render_template("contact.html", form=form)
 
@@ -78,6 +110,14 @@ def success():
 def about():
     return render_template("about.html")
 
+@app.route('/playground')
+def play():
+    return render_template("playground.html")
+
+@app.route('/418')
+def tea():
+    abort(418)
+
 @app.route('/static/<path:filename>')
 def static_files(filename):
     return send_from_directory('static', filename)
@@ -85,10 +125,6 @@ def static_files(filename):
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
-
-@app.route('/418')
-def tea():
-    abort(418)
 
 if __name__ == '__main__':
     app.run(debug=True)
