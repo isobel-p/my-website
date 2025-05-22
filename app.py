@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort, send_from_directory, redirect
+from flask import Flask, render_template, abort, send_from_directory, redirect, make_response, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, TelField, MultipleFileField, BooleanField
 from wtforms.validators import DataRequired
@@ -24,7 +24,9 @@ class Contact(FlaskForm):
 
 @app.route('/')
 def home():
-    return render_template("index.html")
+    resp = make_response(render_template("index.html", message="Welcome back! It's great to see you again." if request.cookies.get("again") == "yes" else "Nice to meet you! Thanks for coming."))
+    resp.set_cookie("again", "yes")
+    return resp
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
@@ -112,7 +114,7 @@ def about():
 
 @app.route('/playground')
 def play():
-    return render_template("playground.html")
+    return render_template("playground.html", xkcd=1)
 
 @app.route('/418')
 def tea():
