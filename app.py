@@ -82,7 +82,7 @@ Because you left your email in the contact form, you're receiving this email rec
             
 This is an automated message from an unmonitored inbox - please don't reply to this email! I'll write to you soon.
             
-Expect a reply in at most 1 business week. Or don't, that's up to you.
+Expect a reply in at most 1 business week.
             
 Kind regards,
 Isobel
@@ -114,7 +114,7 @@ def about():
 
 @app.route('/playground')
 def play():
-    return render_template("playground.html", xkcd=1)
+    return render_template("playground.html")
 
 @app.route('/418')
 def tea():

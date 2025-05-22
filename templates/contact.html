@@ -41,6 +41,10 @@
             <div class="content">
                 <form method="POST" action="/contact">
                     <h2>Say hi!</h2>
+                    <p>Hey there! If you want to talk to me use one of the contact methods below!</p>
+                    <p>I read every message, and spam will be ignored.</p>
+                    <p>I'm active on <a href="https://github.com/isobel-p">Github</a>, <a href="https://hackclub.slack.com">Slack</a>, and <a href=form>email</a>.</p>
+                    <h2>Contact</h2>
                     <p>I'm open to unsolicited testimonials, if you have a partnership request, <a href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons">party invitation</a>, or just want to say hi.</p>
                     <p>Feel free to fill out the universal contact form below. I’ll write back ASAP; I check my messages every morning 8AM GMT. Your messages matter to me!</p>
                     <div class="centre" id="form">
@@ -49,11 +53,13 @@
                         <b>{{ form.first.label }}</b> <br> {{ form.first(size=20) }}<br>
                         {{ form.last.label }} <br> {{ form.last(size=20) }}<br>
                         {{ form.email.label }} <br> {{ form.email(size=20) }}<br>
-                        {{ form.tel.label }} <br> {{ form.tel(size=20) }}<br><br>
+                        {{ form.tel.label }} <br> {{ form.tel(size=20) }}<br><br><br>
                         {{ form.social.label }} <br> {{ form.social(size=20) }}<br>
-                        {{ form.username.label }} <br> {{ form.username(size=20) }}<br><br>
+                        {{ form.username.label }} <br> {{ form.username(size=20) }}
+                        <p>Remember, if I'm not on that platform I can't respond!<br>Email is encouraged.</p><br><br>
                         <b>{{ form.message.label }}</b> <br> {{ form.message(size=70) }}<br><br>
-                        {{ form.files.label }} {{ form.files() }}<br><br>
+                        {{ form.files.label }} {{ form.files() }}
+                        <p>^ attachments broken for now, working on a fix</p><br><br>
                         {{ form.news.label }} {{ form.news() }}<br>
                         <input type="submit" value="Go">
                         {% for field in form %}
@@ -71,6 +77,23 @@
                     <h3>Not working?</h3>
                     <p>I'm probably working to fix this right now, but in the meantime you can email me <a href="mailto:isobel-p@hackclub.app">here</a>.</p>
                 </form>
+                <h2>Giscus</h2>
+                <p>Say hi to me on GitHub! Preferred for more formal discussions, but all messages will be read and appreciated.</p>
+                <p>However you write to me, I'll respond in roughly the same timescale. Please don't spam all the contact forms!</p>
+                <script src="https://giscus.app/client.js"
+                        data-repo="isobel-p/my-website"
+                        data-repo-id="R_kgDOOg7lHg"
+                        data-mapping="number"
+                        data-term="1"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="top"
+                        data-theme="light"
+                        data-lang="en"
+                        data-loading="lazy"
+                        crossorigin="anonymous"
+                        async>
+                </script>
             </div>
         </div>
     </main>
