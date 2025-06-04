@@ -109,6 +109,16 @@ h1 {
     margin-top: 0px;
 }
 
+/* Error page */
+#error {
+    background-color: #ffe5e5;
+    border: 2px solid #ff0000;
+    border-radius: 12px;
+    padding: 10px;
+    color: #b20000;
+    max-width: fit-content;
+}
+
 /* Contact form */
 
 #form {

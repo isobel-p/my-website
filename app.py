@@ -7,6 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText 
 from email.mime.application import MIMEApplication
 import datetime
+from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "Hello123"
@@ -22,12 +23,31 @@ class Contact(FlaskForm):
     files = MultipleFileField('Attachments')
     news = BooleanField('I would like to receive newsletters and updates (if I ever send them)')
 
+# Returns HTML 
 @app.route('/')
 def home():
     resp = make_response(render_template("index.html", message="Welcome back! It's great to see you again." if request.cookies.get("again") == "yes" else "Nice to meet you! Thanks for coming."))
     resp.set_cookie("again", "yes")
     return resp
 
+@app.route('/success')
+def success():
+    return render_template('success.html')
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
+@app.route('/playground')
+def play():
+    return render_template("playground.html")
+
+@app.route('/418')
+def tea():
+    abort(418)
+    # easter egg!
+
+# Contact form and email handling
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = Contact()
@@ -104,29 +124,29 @@ Sent at {datetime.datetime.now()} from sunny England"""
         return redirect('/success')
     return render_template("contact.html", form=form)
 
-@app.route('/success')
-def success():
-    return render_template('success.html')
-
-@app.route('/about')
-def about():
-    return render_template("about.html")
-
-@app.route('/playground')
-def play():
-    return render_template("playground.html")
-
-@app.route('/418')
-def tea():
-    abort(418)
-
+# File retrieval
 @app.route('/static/<path:filename>')
 def static_files(filename):
     return send_from_directory('static', filename)
+    # returns static files e.g. images, CSS or JS
 
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
+# Error handling
+@app.errorhandler(Exception)
+def handle_error(e):
+    code = 500                       # sets default error code of 500 (Internal Server Error)...
+    if isinstance(e, HTTPException): # ...but checks if the exception is a valid HTTPException...
+        code = e.code                # ...and changes the default error code if it is.
+    ctitles = {404:"Aw, we lost this page! Or did it ever even exist?", 418:"How did you get here? Spill the tea."}
+    title = ctitles[code] if code in ctitles else "Whoops, that's an error!"
+    fault = "Looks like something broke here." if str(code)[0] == "5" else "Looks like something went wrong."
+    fault = "Looks like Earl Grey, hot." if code == 418 else fault
+    cat = f"https://reehttp.cat/{code}"
+    return render_template("error.html", title=title, fault=fault, error=e, code=code), code
+
+# Runs the app in debug mode for testing!
 if __name__ == '__main__':
     app.run(debug=True)

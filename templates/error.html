@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ code }} - isobel-p</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <main class="centre">
+        <h1>{{ code }}</h1>
+        <h2>{{ title }}</h2>
+        <p>{{ fault }}</p>
+        <p>Here's what the bot has to say about it: </p>
+        <p id="error", class="centre">{{ error }}</p>
+        <p>That's all I know.</p>
+        <a href="/">> Go home</a><br>
+        <a href="{{ cat }}" target="_blank" rel="noopener">&gt; Cat!</a>
+    </main>
+</body>
+</html>
