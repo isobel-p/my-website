@@ -113,7 +113,7 @@ h1 {
 #error {
     background-color: #ffe5e5;
     border: 2px solid #ff0000;
-    border-radius: 12px;
+    border-radius: 6px;
     padding: 10px;
     color: #b20000;
     max-width: fit-content;
