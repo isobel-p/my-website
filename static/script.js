@@ -1,3 +1,7 @@
+window.addEventListener("load", (event) => {
+  new cursoreffects.followingDotCursor();
+});
+
 // split elements with the class "split" into words and characters
 let split = SplitText.create(".split", { type: "words, chars" });
 
