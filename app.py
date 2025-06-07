@@ -144,8 +144,9 @@ def handle_error(e):
     title = ctitles[code] if code in ctitles else "Whoops, that's an error!"
     fault = "Looks like something broke here." if str(code)[0] == "5" else "Looks like something went wrong."
     fault = "Looks like Earl Grey, hot." if code == 418 else fault
-    cat = f"https://http.cat/{code}"
-    return render_template("error.html", cat=cat, title=title, fault=fault, error=e, code=code), code
+    cat = f"https://http.cat/{code}.jpg"
+    dog = f"https://http.dog/{code}.jpg"
+    return render_template("error.html", cat=cat, dog=dog, title=title, fault=fault, error=e, code=code), code
 
 # Runs the app in debug mode for testing!
 if __name__ == '__main__':
