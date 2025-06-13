@@ -25,6 +25,3 @@ Hey there! Welcome to my personal outpost on the internet.
 
 ## Contributing
 Contributions are welcome and appreciated! Please open an issue or submit a pr. If you find any bugs please let me know!
-
-## License
-This project is licensed under the [MIT License](LICENSE).
