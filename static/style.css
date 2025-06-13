@@ -119,6 +119,19 @@ h1 {
     max-width: fit-content;
 }
 
+/* Index */
+
+.icon {
+  position: relative;
+  cursor: grab;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+icon:active {
+    cursor: grabbing;
+}
+
 /* Contact form */
 
 #form {
