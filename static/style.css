@@ -109,6 +109,20 @@ h1 {
     margin-top: 0px;
 }
 
+.button {
+    color: white;
+    padding: 14px 28px;
+    cursor: border;
+    background-color: black;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.button:hover {
+    color: white;
+    background-color: #67ae8d;
+}
+
 /* Error page */
 #error {
     background-color: #ffe5e5;
@@ -120,6 +134,13 @@ h1 {
 }
 
 /* Index */
+
+#icon-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 
 .icon {
   position: relative;

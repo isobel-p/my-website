@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
     stagger: 0.05
   });
 
-  Draggable.create("#python", { inertia: true });
-  Draggable.create("#html", { inertia: true });
-  Draggable.create("#css", { inertia: true });
-  Draggable.create("#js", { inertia: true });
-  Draggable.create("#c",  { inertia: true });
+  Draggable.create("#python", { inertia: true, bounds:document.getElementsByClassName("content") });
+  Draggable.create("#html", { inertia: true, bounds:document.getElementsByClassName("content") });
+  Draggable.create("#css", { inertia: true, bounds:document.getElementsByClassName("content") });
+  Draggable.create("#js", { inertia: true, bounds:document.getElementsByClassName("content") });
+  Draggable.create("#c",  { inertia: true, bounds:document.getElementsByClassName("content") });
 });
