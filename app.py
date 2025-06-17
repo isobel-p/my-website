@@ -140,7 +140,7 @@ def handle_error(e):
     code = 500                       # sets default error code of 500 (Internal Server Error)...
     if isinstance(e, HTTPException): # ...but checks if the exception is a valid HTTPException...
         code = e.code                # ...and changes the default error code if it is.
-    ctitles = {404:"This is not the page you are looking for.", 418:"How did you get here? Spill the tea."}
+    ctitles = {404:"This is not the page you are looking for.", 418:"How did you get here? Spill the tea."} # custom titles
     title = ctitles[code] if code in ctitles else "Whoops, that's an error!"
     fault = "Looks like something broke here." if str(code)[0] == "5" else "Looks like something went wrong."
     fault = "Looks like Earl Grey, hot." if code == 418 else fault
