@@ -7,7 +7,7 @@ const btn = document.getElementById('music-button');
 
 let playing = false;
 
-audio.src = 'https://cloud-dx9y4rk8f-hack-club-bot.vercel.app/5drunk_raccoon_audio.mp4';
+  audio.src = "/music.mp3";
 
 btn.addEventListener('click', () => {
     playing = !playing;

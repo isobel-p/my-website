@@ -122,6 +122,11 @@ h1 {
     background-color: #67ae8d;
 }
 
+::selection {
+    color: white;
+    background: #2c2c2c;
+}
+
 /* Error page */
 #error {
     background-color: #ffe5e5;
@@ -132,13 +137,25 @@ h1 {
     max-width: fit-content;
 }
 
+.hidden {
+    color: white;
+}
+
+.hidden:hover {
+    color: #2c2c2c;
+    transition-duration: 600ms;
+}
+
 /* Index */
 
 #icon-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    border: 10px dotted #303030;
 }
 
 .icon {
@@ -148,7 +165,7 @@ h1 {
   max-height: 100px;
 }
 
-icon:active {
+.icon:active {
     cursor: grabbing;
 }
 
@@ -220,6 +237,24 @@ icon:active {
     }
     .button:hover {
         color: #2c2c2c;
+    }
+
+    .hidden {
+        color: #303030;
+    }
+
+    .hidden:hover {
+        color: white;
+        transition-duration: 600ms;
+    }
+
+    ::selection {
+        color: #2c2c2c;
+        background-color: white;
+    }
+
+    #icon-container {
+        border-color: white;
     }
     
     #error {
