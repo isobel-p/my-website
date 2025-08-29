@@ -38,8 +38,9 @@ def success():
 def about():
     return render_template("about.html")
 
-@app.route('/playground')
+@app.route('/playground', methods=["GET"])
 def play():
+
     return render_template("playground.html")
 
 @app.route('/418')
@@ -150,4 +151,4 @@ def handle_error(e):
 
 # Runs the app in debug mode for testing!
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=33881)

@@ -1,12 +1,7 @@
 # My Website
 Hey there! Welcome to my personal outpost on the internet.
 
-## Features
-- GSAP animations (WIP)
-- Hosted securely on [Nest](https://hackclub.app)
-- Personal portfolio & blog (coming soon...)
-- Web experiments section
-- Easter eggs...
+[![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
 
 ## Local Development
 1. Clone the repo:
@@ -21,7 +16,3 @@ Hey there! Welcome to my personal outpost on the internet.
     ```bash
     python3 app.py
     ```
-4. To host it yourself use any WSGI server compatible with Flask.
-
-## Contributing
-Contributions are welcome and appreciated! Please open an issue or submit a pr. If you find any bugs please let me know!
